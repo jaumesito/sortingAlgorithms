@@ -2,6 +2,7 @@ package sortingAlgorithms;
 
 import controlador.BubbleSort;
 import controlador.InsertionSort;
+import controlador.SelectionSort;
 import model.Dades;
 import vista.SortingAlgorithmsPanel;
 
@@ -57,6 +58,20 @@ public class SortingAlgorithms implements Notificar {
                 }
                 if (vius == 0) {
                     procesos.add(new BubbleSort(this));
+                    for (int i = 0; i < procesos.size(); i++) {
+                        ((Thread) procesos.get(i)).start();
+                    }
+                }
+            }
+            case "selection" -> {
+                vius = 0;
+                for(int i=0;i<procesos.size();i++) {
+                    if (((Thread)procesos.get(i)).isAlive()) {
+                        vius++;
+                    }
+                }
+                if (vius == 0) {
+                    procesos.add(new SelectionSort(this));
                     for (int i = 0; i < procesos.size(); i++) {
                         ((Thread) procesos.get(i)).start();
                     }
