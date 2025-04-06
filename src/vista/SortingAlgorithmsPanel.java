@@ -23,12 +23,14 @@ public class SortingAlgorithmsPanel extends JPanel implements Notificar {
         JButton bubbleButton = new JButton("Bubble");
         JButton selectionButton = new JButton("Selection");
         JButton insertionButton = new JButton("Insertion");
+        JButton heapButton = new JButton("Heap");
         JButton aturarButton = new JButton("Aturar");
         JButton reiniciarButton = new JButton("Reiniciar");
 
         topBar.add(bubbleButton);
         topBar.add(selectionButton);
         topBar.add(insertionButton);
+        topBar.add(heapButton);
         topBar.add(aturarButton);
         topBar.add(reiniciarButton);
 
@@ -59,6 +61,13 @@ public class SortingAlgorithmsPanel extends JPanel implements Notificar {
             @Override
             public void actionPerformed(ActionEvent e) {
                 principal.notificar("insertion");
+            }
+        });
+
+        heapButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                principal.notificar("heap");
             }
         });
 

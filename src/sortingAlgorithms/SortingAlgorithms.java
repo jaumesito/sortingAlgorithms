@@ -1,6 +1,7 @@
 package sortingAlgorithms;
 
 import controlador.BubbleSort;
+import controlador.HeapSort;
 import controlador.InsertionSort;
 import controlador.SelectionSort;
 import model.Dades;
@@ -40,8 +41,8 @@ public class SortingAlgorithms implements Notificar {
     private void preparar() {
         procesos = new ArrayList <> ();
         dad.clear();
-        for (int i = 0; i < 100; i++) {
-            dad.posarElement(rand.nextInt(1, 100));
+        for (int i = 0; i < 800; i++) {
+            dad.posarElement(rand.nextInt(1, 800));
         }
     }
 
@@ -86,6 +87,20 @@ public class SortingAlgorithms implements Notificar {
                 }
                 if (vius == 0) {
                     procesos.add(new InsertionSort(this));
+                    for (int i = 0; i < procesos.size(); i++) {
+                        ((Thread) procesos.get(i)).start();
+                    }
+                }
+            }
+            case "heap" -> {
+                vius = 0;
+                for(int i=0;i<procesos.size();i++) {
+                    if (((Thread)procesos.get(i)).isAlive()) {
+                        vius++;
+                    }
+                }
+                if (vius == 0) {
+                    procesos.add(new HeapSort(this));
                     for (int i = 0; i < procesos.size(); i++) {
                         ((Thread) procesos.get(i)).start();
                     }
