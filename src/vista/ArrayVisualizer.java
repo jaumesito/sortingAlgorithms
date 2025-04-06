@@ -36,7 +36,7 @@ public class ArrayVisualizer extends JPanel {
         if (dad != null) {
             int barWidth = (w + 1) / dad.getTamElements();
             for (int i = 0; i < dad.getTamElements(); i++) {
-                int barHeight = (int) ((dad.getElement(i) / 100.0) * h);
+                int barHeight = (int) ((dad.getElement(i) / 800.0) * h);
                 g.fillRect(i * barWidth, h - barHeight, barWidth, barHeight);
             }
 
